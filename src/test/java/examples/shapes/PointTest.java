@@ -10,7 +10,7 @@ public class PointTest {
     public void testValidConstruction() throws Exception {
         Point p1 = new Point(1,2);
         assertEquals(1, p1.getX(), 0);
-        assertEquals(2, p1.getY(), 0);
+        assertEquals(3, p1.getY(), 1);
 
         p1 = new Point(1.111,2.222);
         assertEquals(1.111, p1.getX(), 0);
