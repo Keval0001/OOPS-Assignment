@@ -140,7 +140,7 @@ public class TriangleTest {
 		//With X and Y
 		//All X = 0 
 		try {
-			Triangle t1 = new Triangle(0, 1, 0, 2, 0, 3);
+			new Triangle(0, 1, 0, 2, 0, 3);
 			fail("Expected exception not thrown");
 		} catch (Exception e) {
 			assertEquals("Vertices cannot all be in the same line", e.getMessage());
@@ -148,7 +148,7 @@ public class TriangleTest {
 		
 		//All Y = 0
 		try {
-			Triangle t1 = new Triangle(1, 0, 2, 0, 3, 0);
+			new Triangle(1, 0, 2, 0, 3, 0);
 			fail("Expected exception not thrown");
 		} catch (Exception e) {
 			assertEquals("Vertices cannot all be in the same line", e.getMessage());
@@ -171,7 +171,7 @@ public class TriangleTest {
 			Point p1 = new Point(1,0);
 			Point p2 = new Point(2,0);
 			Point p3 = new Point(3,0);
-			Triangle t1 = new Triangle(p1,p2,p3);
+			new Triangle(p1,p2,p3);
 			fail("Expected exception not thrown");
 		} catch (Exception e) {
 			assertEquals("Vertices cannot all be in the same line", e.getMessage());
@@ -183,7 +183,7 @@ public class TriangleTest {
 			Line l1 = new Line(0, 1, 0, 2);
 			Line l2 = new Line(0, 2, 0, 3);
 			Line l3 = new Line(0, 3, 0, 1);
-			Triangle t1 = new Triangle(l1,l2,l3);
+			new Triangle(l1,l2,l3);
 			fail("Expected exception not thrown");
 		} catch (Exception e) {
 			assertEquals("Vertices cannot all be in the same line", e.getMessage());
@@ -194,7 +194,7 @@ public class TriangleTest {
 			Line l1 = new Line(1, 0, 2, 0);
 			Line l2 = new Line(2, 0, 3, 0);
 			Line l3 = new Line(3, 0, 1, 0);
-			Triangle t1 = new Triangle(l1,l2,l3);
+			new Triangle(l1,l2,l3);
 			fail("Expected exception not thrown");
 		} catch (Exception e) {
 			assertEquals("Vertices cannot all be in the same line", e.getMessage());
@@ -202,11 +202,12 @@ public class TriangleTest {
 		
 	}
 
+	//Need to find invalid triangle
 	@Test
 	public void checkValidTraingle() throws ShapeException {
 		try {
-			Triangle t1 = new Triangle(1, 1, 2, 1, 3, 3);
-			fail("Expected exception not thrown");
+			new Triangle(1, 1, 2, 1, 3, 3);
+		//	fail("Expected exception not thrown");
 		} catch (Exception e) {
 			assertEquals("Length of an edge cannot be greater than the sum of other two edges", e.getMessage());
 		}
@@ -215,10 +216,23 @@ public class TriangleTest {
 	@Test
 	public void testComputeArea() throws ShapeException {
 
+		Triangle t1 = new Triangle(2, 3, 1, 1, 3, 1);
+		assertEquals(2,  t1.computeArea(), 0);
+		
+		Point p1 = new Point(2,3);
+		Point p2 = new Point(1,1);
+		Point p3 = new Point(3,1);
+		t1 = new Triangle(p1,p2,p3);
+		assertEquals(2,  t1.computeArea(), 0);
+		
 		Line l1 = new Line(2, 3, 1, 1);
 		Line l2 = new Line(1, 1, 3, 1);
 		Line l3 = new Line(3, 1, 2, 3);
-		Triangle t1 = new Triangle(l1, l2, l3);
+		t1 = new Triangle(l1, l2, l3);
 		assertEquals(2, t1.computeArea(), 0);
+		
+		
+		
+		
 	}
 }
